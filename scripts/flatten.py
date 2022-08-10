@@ -8,8 +8,10 @@ def main():
     admin, creator, consumer, iwan = get_accounts(active_network)
 
     try:
-        nft = Agreement.deploy(addr(admin))
-        flat_contract('Agreement', Agreement.get_verification_info())
+        test= TestContract.deploy(addr(admin))
+        proxy= Proxy.deploy(addr(admin))
+        flat_contract('TestContract', TestContract.get_verification_info())
+        flat_contract('Proxy', Proxy.get_verification_info())
 
     except Exception:
         console.print_exception()

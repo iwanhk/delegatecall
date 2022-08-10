@@ -9,15 +9,16 @@ def main():
 
     try:
         if active_network in LOCAL_NETWORKS:
-            nft = Agreement.deploy(addr(admin))
+            test= TestContract.deploy(addr(admin))
+            proxy= Proxy.deploy(addr(admin))
+
         if active_network in TEST_NETWORKS:
-            admin.deploy(contract=Agreement, publish_source=True)
-            asset = Asset.deploy(addr(admin))
+            test= TestContract.deploy(addr(admin))
+            proxy= Proxy.deploy(addr(admin))
 
         if active_network in REAL_NETWORKS:
-            #nft = Agreement.deploy(addr(admin))
-            # 0x7eE5eA1f769703B755A2F7A7C76E9C00fd2aB8C7
-            admin.deploy(contract=Agreement, publish_source=True)
+            test= TestContract.deploy(addr(admin))
+            proxy= Proxy.deploy(addr(admin))
 
     except Exception:
         console.print_exception()
